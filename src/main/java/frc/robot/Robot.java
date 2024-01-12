@@ -36,7 +36,17 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    
+    if (ps3.getRawButton(6)){
+      neote_roller_delantero.set(0.3);
+    }
+
+    if (ps3.getRawButton(5)){
+      neito_roller_trasero.set(-0.5);
+    } else {
+      neito_roller_trasero.set(0);
+      neote_roller_delantero.set(0);
+
+    }
   }
 
   @Override
