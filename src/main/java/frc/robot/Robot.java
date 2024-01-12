@@ -4,6 +4,10 @@
 
 package frc.robot;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 /**
@@ -16,12 +20,24 @@ public class Robot extends TimedRobot {
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
+   * 
+   * 
    */
+  // MOTORES KillerBees
+  CANSparkMax neito_roller_trasero = new CANSparkMax(1, MotorType.kBrushless);
+  CANSparkMax neote_roller_delantero = new CANSparkMax(2, MotorType.kBrushless);
+
+  Joystick ps3 = new Joystick(0);
+
+
+
   @Override
   public void robotInit() {}
 
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+    
+  }
 
   @Override
   public void autonomousInit() {}
