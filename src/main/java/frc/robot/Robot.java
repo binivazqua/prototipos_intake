@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenixpro.controls.Follower;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -30,30 +31,21 @@ public class Robot extends TimedRobot {
 
 
 
+
   Joystick ps3 = new Joystick(0);
 
 
 
   @Override
-  public void robotInit() {}
+  public void robotInit() {
+
+    // neito trasero sigue al delantero.
+    neito_roller_trasero.follow(neito_roller_delantero, true);
+  }
 
   @Override
   public void robotPeriodic() {
 
-
-    /* 
-    if (ps3.getRawButton(6)){
-      neito_roller_delantero.set(0.3);
-    }
-
-    if (ps3.getRawButton(5)){
-      neito_roller_trasero.set(-0.5);
-    } else {
-      neito_roller_trasero.set(0);
-      neito_roller_delantero.set(0);
-
-    }
-    */
   }
 
   @Override
@@ -73,15 +65,20 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-    if (ps3.getRawButton(3)) {
-      //neito_roller_trasero.set(0.25);
+    boolean note_approach = true;
+
+    while(note_approach) {
+      if (ps3.getRawButtonPressed(0)){
       neito_roller_delantero.set(0.35);
-      neito_roller_trasero.set(-0.25); // el que vq para atras
+    } else if (ps3.getRawButton(1)) {
+      neito_roller_delantero.set(-0.35);
     } else {
       neito_roller_delantero.set(0);
-      neito_roller_trasero.set(0);
-     // neito_roller_delantero.set(0);
+
     }
+
+    }
+
 
   
 
