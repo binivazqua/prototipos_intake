@@ -24,8 +24,10 @@ public class Robot extends TimedRobot {
    * 
    */
   // MOTORES KillerBees
-  CANSparkMax neito_roller_delantero = new CANSparkMax(1, MotorType.kBrushless);
+  
+  CANSparkMax neito_roller_delantero = new CANSparkMax(1, MotorType.kBrushless); 
   CANSparkMax neito_roller_trasero = new CANSparkMax(2, MotorType.kBrushless);
+
 
 
   Joystick ps3 = new Joystick(0);
@@ -37,6 +39,9 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
+
+
+    /* 
     if (ps3.getRawButton(6)){
       neito_roller_delantero.set(0.3);
     }
@@ -48,6 +53,7 @@ public class Robot extends TimedRobot {
       neito_roller_delantero.set(0);
 
     }
+    */
   }
 
   @Override
@@ -57,10 +63,29 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {}
 
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+    //neito_roller_delantero.set(0.10);
+    //neito_roller_trasero.set(0.10);
+
+
+  }
 
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+
+    if (ps3.getRawButton(3)) {
+      //neito_roller_trasero.set(0.25);
+      neito_roller_delantero.set(0.35);
+      neito_roller_trasero.set(-0.25); // el que vq para atras
+    } else {
+      neito_roller_delantero.set(0);
+      neito_roller_trasero.set(0);
+     // neito_roller_delantero.set(0);
+    }
+
+  
+
+  }
 
   @Override
   public void disabledInit() {}
